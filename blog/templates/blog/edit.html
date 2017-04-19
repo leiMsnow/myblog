@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% if article.title %}
+            编辑博客
+        {% else %}
+            新建博客
+        {% endif %}
+    </title>
+</head>
+<body>
+<a href="{% url 'blog:index' %}">首页</a>
+<form action="{% url 'blog:article_submit' %}" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="id" value="{{ article.id }}" />
+    <label>标题
+        <input type="text" name="title" value="{{ article.title }}"/>
+    </label>
+    <br />
+    <label>内容
+        <input type="text" name="content" value="{{ article.content }}"/>
+    </label>
+    <br />
+    <input type="submit"/>
+</form>
+
+</body>
+</html>
