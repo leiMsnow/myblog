@@ -17,13 +17,9 @@ def article_details(request, article_id):
 def article_edit(request, article_id=0):
     if int(article_id) > 0:
         article = models.Article.objects.get(pk=article_id)
+        return render(request, 'blog/edit.html', {"article": article})
     else:
-        article = models.Article()
-        article.pk = 0
-        article.title = ""
-        article.content = ""
-
-    return render(request, 'blog/edit.html', {"article": article})
+        return render(request, 'blog/edit.html')
 
 
 def article_submit(request):

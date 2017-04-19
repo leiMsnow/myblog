@@ -7,7 +7,7 @@
 <body>
 <a href="{% url 'blog:article_edit' 0 %}">写博客</a><br />
 {% for article in articles %}
-    <a href="{% url 'blog:article_details' article.id %}">{{article.title}}</a><br/>
+    <a href="{% url 'blog:article_details' article.id %}">{{ article.title }}</a><br/>
 {% endfor %}
 </body>
 </html>

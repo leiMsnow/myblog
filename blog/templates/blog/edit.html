@@ -10,10 +10,9 @@
     </title>
 </head>
 <body>
-<a href="{% url 'blog:index' %}">首页</a>
 <form action="{% url 'blog:article_submit' %}" method="post">
     {% csrf_token %}
-    <input type="hidden" name="id" value="{{ article.id }}" />
+    <input type="hidden" name="id" value="{{ article.id | default:'0'}}" />
     <label>标题
         <input type="text" name="title" value="{{ article.title }}"/>
     </label>
